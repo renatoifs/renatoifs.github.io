@@ -24,7 +24,7 @@ export const Header = () => {
           {/* Logo/Name */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/cqn8r87d_Logofmup.jpg"
+              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
               alt="FMUP Logo"
               className="h-12 w-auto object-contain"
             />
