@@ -1,8 +1,26 @@
 # Website Pessoal - Renato Ferreira da Silva
 
-Este é o seu site pessoal estático, pronto para ser publicado no GitHub Pages.
+Site pessoal estático, pronto para publicar no GitHub Pages.
 
-## Como Publicar no GitHub Pages
+## 📁 Estrutura dos Ficheiros
+
+```
+renatoifs.github.io/
+├── index.html          # Página principal
+├── styles.css          # Estilos visuais
+├── script.js           # Funcionalidade de idioma (PT/EN)
+├── README.md           # Este ficheiro
+└── assets/             # Imagens
+    ├── profile.jpeg    # Foto de perfil
+    ├── logo-fmup.jpg   # Logo FMUP
+    ├── logo-medcids.png# Logo MEDCIDS
+    ├── logo-ufporto.png# Logo UFPorto - Farmacovigilância
+    └── logo-rise.png   # Logo RISE Health
+```
+
+---
+
+## 🚀 Como Publicar no GitHub Pages
 
 ### Passo 1: Aceder ao GitHub
 1. Vá a [github.com](https://github.com) e faça login na conta **renatoifs**
@@ -16,11 +34,7 @@ Este é o seu site pessoal estático, pronto para ser publicado no GitHub Pages.
 
 ### Passo 3: Fazer Upload dos Ficheiros
 1. Na página do repositório recém-criado, clique em **"uploading an existing file"**
-2. Arraste todos os ficheiros desta pasta para a área de upload:
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-   - Pasta `assets/` (com todas as imagens)
+2. Arraste **TODOS** os ficheiros e a pasta `assets/` para a área de upload
 3. Escreva uma mensagem de commit, ex: "Primeira versão do site"
 4. Clique em **"Commit changes"**
 
@@ -37,27 +51,20 @@ Este é o seu site pessoal estático, pronto para ser publicado no GitHub Pages.
 
 ---
 
-## Estrutura dos Ficheiros
+## ✨ Funcionalidades
 
-```
-renatoifs.github.io/
-├── index.html          # Página principal
-├── styles.css          # Estilos visuais
-├── script.js           # Funcionalidade de idioma (PT/EN)
-├── README.md           # Este ficheiro
-└── assets/             # Imagens
-    ├── profile.jpeg    # Sua foto
-    ├── logo-fmup.jpg   # Logo FMUP
-    ├── logo-medcids.png# Logo MEDCIDS
-    ├── logo-ufporto.png# Logo UFPorto
-    └── logo-rise.png   # Logo RISE Health
-```
+- **Bilingue**: Botão no canto superior direito alterna entre PT e EN
+- **Responsivo**: Adapta-se a telemóveis, tablets e desktop
+- **Links externos**: Todos os perfis académicos e afiliações são clicáveis
+- **Design moderno**: Layout profissional baseado no site original
 
-## Como Editar o Conteúdo
+---
+
+## ✏️ Como Editar o Conteúdo
 
 Para fazer alterações no futuro:
 
-1. Aceda ao repositório em github.com/renatoifs/renatoifs.github.io
+1. Aceda ao repositório em `github.com/renatoifs/renatoifs.github.io`
 2. Clique no ficheiro que deseja editar (ex: `index.html`)
 3. Clique no ícone do lápis (Edit)
 4. Faça as alterações
@@ -65,12 +72,23 @@ Para fazer alterações no futuro:
 
 As alterações serão publicadas automaticamente em 1-2 minutos.
 
-## Funcionalidades
+---
 
-- **Bilingue**: Botão no canto superior direito alterna entre PT e EN
-- **Responsivo**: Adapta-se a telemóveis e tablets
-- **Links externos**: Todos os perfis académicos e afiliações são clicáveis
+## 📋 Conteúdo do Site
 
-## Suporte
+- **Nome e Credenciais**: Renato Ferreira da Silva, MPharm, PhD
+- **Cargo**: Professor Auxiliar
+- **Departamento**: Medicina da Comunidade, Informação e Decisão em Saúde
+- **Instituição**: Faculdade de Medicina da Universidade do Porto
+- **Especialidade**: Farmacovigilância e Farmacoepidemiologia
+- **Áreas de Foco**: 7 áreas principais listadas
+- **Perfis**: ORCID, Scopus, Web of Science, CIÊNCIAVITAE, Authenticus, Google Scholar, ResearchGate, LinkedIn
+- **Afiliações**: FMUP, UFPorto, MEDCIDS, RISE Health
+- **Contacto**: Email, telefone e morada
 
-Este é um site estático simples que não requer manutenção ou custos de alojamento.
+---
+
+## 💡 Suporte
+
+Este é um site estático simples que **não requer manutenção** nem custos de alojamento.
+O GitHub Pages é **100% gratuito** para repositórios públicos.
