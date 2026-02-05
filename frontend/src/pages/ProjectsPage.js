@@ -7,8 +7,8 @@ export const ProjectsPage = () => {
 
   const fundedProjects = [
     {
-      nameEN: 'VIGIA Project',
-      namePT: 'Projeto VIGIA',
+      nameEN: 'VIGIA - Surveillance System for Medicines and Medical Devices with Artificial Intelligence',
+      namePT: 'VIGIA - Sistema de VIGilância de Medicamentos e Dispositivos Médicos com Inteligência Artificial',
       code: 'COMPETE2030-FEDER-02045600',
       period: '2025 - Ongoing',
       role: 'Principal Investigator (PI) at FMUP',
