@@ -20,7 +20,10 @@ export const translations = {
       expert: 'Pharmacovigilance & Pharmacoepidemiology Expert',
       researchCenter: 'Porto Pharmacovigilance Centre',
       areas: 'Areas of Focus',
-      areasList: 'Pharmacovigilance · Pharmacoepidemiology · Real-World Evidence · Evidence Synthesis · Clinical Research Methodology · Health Technology Assessment · Digital Health'
+      areasList: 'Pharmacovigilance · Pharmacoepidemiology · Real-World Evidence · Evidence Synthesis · Clinical Research Methodology · Health Technology Assessment · Digital Health',
+      identifiers: 'Research Identifiers',
+      platforms: 'Academic Platforms',
+      networks: 'Professional Networks'
     },
     about: {
       title: 'About',
