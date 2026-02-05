@@ -5,22 +5,49 @@ import { BookOpen, Users } from 'lucide-react';
 export const TeachingPage = () => {
   const { t } = useLanguage();
 
-  const teachingAreas = [
-    'teaching.area1',
-    'teaching.area2',
-    'teaching.area3',
-    'teaching.area4',
-    'teaching.area5',
-    'teaching.area6',
-    'teaching.area7'
+  const teachingAreasEN = [
+    'Clinical research methodologies',
+    'Health technology assessment',
+    'Evidence synthesis and evaluation',
+    'Health decision-making',
+    'Digital health',
+    'Biostatistics and data analysis',
+    'Pharmacovigilance and pharmacoepidemiology'
   ];
 
-  const programs = [
+  const teachingAreasPT = [
+    'Metodologias de investigação clínica',
+    'Avaliação de tecnologias de saúde',
+    'Síntese e avaliação de evidência',
+    'Tomada de decisão em saúde',
+    'Saúde digital',
+    'Bioestatística e análise de dados',
+    'Farmacovigilância e farmacoepidemiologia'
+  ];
+
+  const programsEN = [
     'Pharmaceutical Sciences',
     'Nursing',
     'Medicine',
-    'Digital Health & Biomedical Innovation'
+    'Digital Health & Biomedical Innovation',
+    'Health Data Science',
+    'Medical Informatics',
+    'Primary Health Care'
   ];
+
+  const programsPT = [
+    'Ciências Farmacêuticas',
+    'Enfermagem',
+    'Medicina',
+    'Saúde Digital & Inovação Biomédica',
+    'Ciência de Dados em Saúde',
+    'Informática Médica',
+    'Cuidados de Saúde Primários'
+  ];
+
+  const { language } = useLanguage();
+  const areas = language === 'en' ? teachingAreasEN : teachingAreasPT;
+  const programs = language === 'en' ? programsEN : programsPT;
 
   return (
     <div className="min-h-screen pt-28 pb-16 bg-slate-50">
@@ -49,7 +76,7 @@ export const TeachingPage = () => {
             <div className="bg-slate-50 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center">
                 <Users className="mr-2 text-slate-600" size={20} />
-                Study Programs
+                {language === 'en' ? 'Study Programs' : 'Programas de Estudos'}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {programs.map((program, index) => (
@@ -73,7 +100,7 @@ export const TeachingPage = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {teachingAreas.map((area, index) => (
+              {areas.map((area, index) => (
                 <div
                   key={index}
                   className="flex items-start space-x-3 p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors"
@@ -82,7 +109,7 @@ export const TeachingPage = () => {
                     {index + 1}
                   </div>
                   <p className="text-base text-slate-700 font-medium">
-                    {t(area)}
+                    {area}
                   </p>
                 </div>
               ))}
