@@ -10,9 +10,9 @@ export const Footer = () => {
           {/* Column 1: Primary Affiliation */}
           <div>
             <img
-              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/cqn8r87d_Logofmup.jpg"
+              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
               alt="FMUP"
-              className="h-16 w-auto object-contain mb-4 brightness-0 invert"
+              className="h-20 w-auto object-contain mb-4"
             />
             <p className="text-sm text-slate-300 leading-relaxed">
               Faculty of Medicine<br />
@@ -20,29 +20,38 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Column 2: Other Affiliations */}
+          {/* Column 2: Institutional Affiliations */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Research Units</h3>
-            <div className="space-y-3 text-sm text-slate-300">
+            <h3 className="font-semibold text-lg mb-4">
+              {language === 'en' ? 'Institutional Affiliations' : 'Afiliações Institucionais'}
+            </h3>
+            <div className="space-y-4 text-sm text-slate-300">
+              <div className="flex items-center space-x-3">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
+                  alt="FMUP"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
               <div className="flex items-center space-x-3">
                 <img
                   src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/ny8d90k6_UFPorto_logo.png"
                   alt="University of Porto"
-                  className="h-8 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </div>
               <div className="flex items-center space-x-3">
                 <img
                   src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/b0778cr6_Logo.Medcids-e1644239830105.png"
                   alt="MEDCIDS"
-                  className="h-8 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </div>
               <div className="flex items-center space-x-3">
                 <img
                   src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/fk5av09d_RISE_logo.png"
                   alt="RISE Health"
-                  className="h-8 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
               </div>
             </div>
