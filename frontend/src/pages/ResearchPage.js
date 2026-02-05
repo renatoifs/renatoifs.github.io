@@ -1,41 +1,31 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Microscope, Database, FileText, Stethoscope, BarChart3, Brain } from 'lucide-react';
 
 export const ResearchPage = () => {
   const { t } = useLanguage();
 
   const researchAreas = [
-    {
-      icon: Microscope,
-      key: 'drugSafety',
-      color: 'bg-blue-100 text-blue-700'
-    },
-    {
-      icon: Database,
-      key: 'pharmaco',
-      color: 'bg-teal-100 text-teal-700'
-    },
-    {
-      icon: FileText,
-      key: 'synthesis',
-      color: 'bg-indigo-100 text-indigo-700'
-    },
-    {
-      icon: Stethoscope,
-      key: 'clinical',
-      color: 'bg-emerald-100 text-emerald-700'
-    },
-    {
-      icon: BarChart3,
-      key: 'hta',
-      color: 'bg-purple-100 text-purple-700'
-    },
-    {
-      icon: Brain,
-      key: 'digital',
-      color: 'bg-cyan-100 text-cyan-700'
-    }
+    'Drug safety',
+    'Pharmacovigilance',
+    'Pharmacoepidemiology',
+    'Clinical research methodologies',
+    'Health technology assessment',
+    'Digital health',
+    'Evidence synthesis (systematic reviews and meta-analyses)',
+    'Clinical epidemiology',
+    'Post-marketing surveillance studies'
+  ];
+
+  const researchAreasPT = [
+    'Segurança de medicamentos',
+    'Farmacovigilância',
+    'Farmacoepidemiologia',
+    'Metodologias de investigação clínica',
+    'Avaliação de tecnologias de saúde',
+    'Saúde digital',
+    'Síntese de evidência (revisões sistemáticas e meta-análises)',
+    'Epidemiologia clínica',
+    'Estudos de vigilância pós-comercialização'
   ];
 
   const methodologies = [
@@ -49,6 +39,9 @@ export const ResearchPage = () => {
     'Real-World Evidence Framework'
   ];
 
+  const { language } = useLanguage();
+  const areas = language === 'en' ? researchAreas : researchAreasPT;
+
   return (
     <div className="min-h-screen pt-28 pb-16 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
@@ -60,33 +53,26 @@ export const ResearchPage = () => {
           <div className="h-1 w-24 bg-slate-900 rounded"></div>
         </div>
 
-        {/* Research Areas */}
+        {/* Research Areas - Simple List */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-slate-900 mb-8">
             {t('research.areasTitle')}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {researchAreas.map((area) => {
-              const Icon = area.icon;
-              return (
-                <div
-                  key={area.key}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
-                  data-testid={`research-area-${area.key}`}
+          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-slate-100">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {areas.map((area, index) => (
+                <li
+                  key={index}
+                  className="flex items-start space-x-3 p-4 rounded-lg hover:bg-slate-50 transition-colors"
                 >
-                  <div className={`inline-flex p-3 rounded-lg ${area.color} mb-4`}>
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3">
-                    {t(`research.${area.key}.title`)}
-                  </h3>
-                  <p className="text-base text-slate-600 leading-relaxed">
-                    {t(`research.${area.key}.desc`)}
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-slate-900 mt-2"></div>
+                  <p className="text-base text-slate-700 font-medium leading-relaxed">
+                    {area}
                   </p>
-                </div>
-              );
-            })}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
