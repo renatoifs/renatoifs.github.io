@@ -154,13 +154,32 @@ async def get_status_checks():
 
 @api_router.get("/publications", response_model=List[Publication])
 async def get_publications():
-    """Get all publications - scrapes Authenticus on each request for auto-update"""
+    """Get all publications from JSON file"""
     try:
-        publications = await scrape_authenticus_publications()
+        import json
+        pub_file = ROOT_DIR / 'data' / 'publications.json'
+        with open(pub_file, 'r', encoding='utf-8') as f:
+            publications = json.load(f)
         return publications
     except Exception as e:
         logging.error(f"Error fetching publications: {e}")
         raise HTTPException(status_code=500, detail="Failed to fetch publications")
+
+@api_router.post("/publications/refresh")
+async def refresh_publications():
+    """Refresh publications by scraping Authenticus (admin endpoint)"""
+    try:
+        publications = await scrape_authenticus_publications()
+        
+        import json
+        pub_file = ROOT_DIR / 'data' / 'publications.json'
+        with open(pub_file, 'w', encoding='utf-8') as f:
+            json.dump(publications, f, indent=2, ensure_ascii=False)
+        
+        return {"message": "Publications refreshed successfully", "count": len(publications)}
+    except Exception as e:
+        logging.error(f"Error refreshing publications: {e}")
+        raise HTTPException(status_code=500, detail="Failed to refresh publications")
 
 @api_router.post("/contact")
 async def submit_contact_form(form: ContactForm):
