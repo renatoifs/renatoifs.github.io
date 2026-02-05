@@ -1,0 +1,68 @@
+{
+  "home": {
+    "en": {
+      "role": "Assistant Professor",
+      "affiliation": "Department of Community Medicine, Information, and Health Decision Sciences",
+      "university": "Faculty of Medicine, University of Porto",
+      "expert": "Pharmacovigilance & Pharmacoepidemiology Expert",
+      "researchCenter": "Porto Pharmacovigilance Centre",
+      "areas": "Areas of Focus",
+      "areasList": "Pharmacovigilance · Pharmacoepidemiology · Real-World Evidence · Evidence Synthesis · Clinical Research Methodology · Health Technology Assessment · Digital Health"
+    },
+    "pt": {
+      "role": "Professor Auxiliar",
+      "affiliation": "Departamento de Medicina da Comunidade, Informação e Decisão em Saúde",
+      "university": "Faculdade de Medicina da Universidade do Porto",
+      "expert": "Especialista em Farmacovigilância e Farmacoepidemiologia",
+      "researchCenter": "Unidade de Farmacovigilância do Porto",
+      "areas": "Áreas de Foco",
+      "areasList": "Farmacovigilância · Farmacoepidemiologia · Evidência do Mundo Real · Síntese de Evidência · Metodologia de Investigação Clínica · Avaliação de Tecnologias de Saúde · Saúde Digital"
+    }
+  },
+  "about": {
+    "en": {
+      "title": "About",
+      "biography": "Professional Biography",
+      "bioText": "Assistant Professor at the Department of Community Medicine, Information, and Health Decision Sciences at the Faculty of Medicine, University of Porto (FMUP). Pharmacist recognized by the Portuguese Pharmaceutical Society, with specialized expertise in Pharmacovigilance and Pharmacoepidemiology. Currently serving as an Expert at the Porto Pharmacovigilance Centre of the Portuguese Pharmacovigilance System (INFARMED, I.P.).",
+      "bioText2": "Integrated Researcher at RISE-Health, focusing on Digital Transformation, Artificial Intelligence, Data and Decision Sciences in Health. Also serves as a Collaborating Researcher in the Pharmacotherapy & Pharmacovigilance group at the Algarve Biomedical Research and Training Center (ABC-RI).",
+      "bioText3": "Research expertise encompasses the design and execution of post-marketing surveillance studies to evaluate drug safety, effectiveness, and utilization patterns. Active involvement in multiple national and international research projects with competitive funding, currently serving as Principal Investigator at FMUP for the VIGIA project.",
+      "education": "Education",
+      "master": "Master in Pharmaceutical Sciences",
+      "masterInst": "Faculty of Pharmacy, University of Porto",
+      "phd": "PhD in Clinical Research and Health Services",
+      "phdInst": "Faculty of Medicine, University of Porto"
+    },
+    "pt": {
+      "title": "Sobre",
+      "biography": "Biografia Profissional",
+      "bioText": "Professor Auxiliar no Departamento de Medicina da Comunidade, Informação e Decisão em Saúde da Faculdade de Medicina da Universidade do Porto (FMUP). Farmacêutico reconhecido pela Ordem dos Farmacêuticos Portugueses, com especialização em Farmacovigilância e Farmacoepidemiologia. Atualmente, exerce funções como Especialista na Unidade de Farmacovigilância do Porto do Sistema Nacional de Farmacovigilância (INFARMED, I.P.).",
+      "bioText2": "Investigador Integrado no RISE-Health, focado na Transformação Digital, Inteligência Artificial e Ciências de Dados e da Decisão em Saúde. É também Investigador Colaborador no grupo de Farmacoterapia e Farmacovigilância do Centro de Investigação e Formação Biomédica do Algarve (ABC-RI).",
+      "bioText3": "A experiência de investigação abrange o desenho e execução de estudos de vigilância pós-comercialização para avaliar a segurança, efetividade e padrões de utilização de medicamentos. Envolvimento ativo em múltiplos projetos de investigação nacionais e internacionais com financiamento competitivo, atuando atualmente como Investigador Principal na FMUP para o projeto VIGIA.",
+      "education": "Formação",
+      "master": "Mestrado em Ciências Farmacêuticas",
+      "masterInst": "Faculdade de Farmácia da Universidade do Porto",
+      "phd": "Doutoramento em Investigação Clínica e Serviços de Saúde",
+      "phdInst": "Faculdade de Medicina da Universidade do Porto"
+    }
+  },
+  "contact": {
+    "en": {
+      "title": "Contact",
+      "address": "Rua Doutor Plácido da Costa",
+      "postalCode": "4200-450 Porto",
+      "country": "Portugal",
+      "phone": "(+351) 220 426 913",
+      "ext": "Ext: 26913",
+      "email": "rsilva@med.up.pt"
+    },
+    "pt": {
+      "title": "Contacto",
+      "address": "Rua Doutor Plácido da Costa",
+      "postalCode": "4200-450 Porto",
+      "country": "Portugal",
+      "phone": "(+351) 220 426 913",
+      "ext": "Ext: 26913",
+      "email": "rsilva@med.up.pt"
+    }
+  }
+}
