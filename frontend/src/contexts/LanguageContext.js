@@ -148,7 +148,10 @@ export const translations = {
       expert: 'Especialista em Farmacovigilância e Farmacoepidemiologia',
       researchCenter: 'Unidade de Farmacovigilância do Porto',
       areas: 'Áreas de Foco',
-      areasList: 'Farmacovigilância · Farmacoepidemiologia · Evidência do Mundo Real · Síntese de Evidência · Metodologia de Investigação Clínica · Avaliação de Tecnologias de Saúde · Saúde Digital'
+      areasList: 'Farmacovigilância · Farmacoepidemiologia · Evidência do Mundo Real · Síntese de Evidência · Metodologia de Investigação Clínica · Avaliação de Tecnologias de Saúde · Saúde Digital',
+      identifiers: 'Identificadores de Investigação',
+      platforms: 'Plataformas Académicas',
+      networks: 'Redes Profissionais'
     },
     about: {
       title: 'Sobre',
