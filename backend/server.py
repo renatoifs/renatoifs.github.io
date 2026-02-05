@@ -1,14 +1,17 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+import aiohttp
+from bs4 import BeautifulSoup
+import re
 
 
 ROOT_DIR = Path(__file__).parent
@@ -28,7 +31,7 @@ api_router = APIRouter(prefix="/api")
 
 # Define Models
 class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+    model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     client_name: str
@@ -37,17 +40,102 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
-# Add your routes to the router instead of directly to app
+class Publication(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    title: str
+    authors: str
+    year: str
+    journal: str
+    volume: Optional[str] = None
+    issue: Optional[str] = None
+    doi: Optional[str] = None
+    url: Optional[str] = None
+    doc_type: Optional[str] = None
+    citations: Optional[int] = None
+
+class ContactForm(BaseModel):
+    name: str
+    email: EmailStr
+    subject: str
+    message: str
+
+
+# Authenticus Scraper
+async def scrape_authenticus_publications():
+    """Scrape publications from Authenticus profile"""
+    try:
+        publications = []
+        base_url = "https://www.authenticus.pt/en/profileOfResearchers/publicationsList/619254"
+        
+        async with aiohttp.ClientSession() as session:
+            # Scrape all three pages
+            for page in range(1, 4):
+                url = f"{base_url}?total_results=29&page={page}" if page > 1 else base_url
+                
+                async with session.get(url) as response:
+                    if response.status == 200:
+                        html = await response.text()
+                        soup = BeautifulSoup(html, 'html.parser')
+                        
+                        # Find all publication entries
+                        pub_blocks = soup.find_all('div', style=lambda value: value and 'padding-bottom: 15px' in value if value else False)
+                        
+                        if not pub_blocks:
+                            # Try alternative selector
+                            pub_blocks = soup.find_all(['p', 'div'], class_=lambda x: x is None)
+                            
+                        # Parse each publication
+                        current_pub = {}
+                        for block in pub_blocks:
+                            text = block.get_text(strip=True)
+                            
+                            if 'TITLE:' in text:
+                                if current_pub:
+                                    publications.append(current_pub)
+                                current_pub = {}
+                                title_match = re.search(r'TITLE:\s*(.+?)(?=AUTHORS:|PUBLISHED:|$)', text, re.DOTALL)
+                                if title_match:
+                                    current_pub['title'] = title_match.group(1).strip()
+                            
+                            if 'AUTHORS:' in text:
+                                authors_match = re.search(r'AUTHORS:\s*(.+?)(?=PUBLISHED:|$)', text, re.DOTALL)
+                                if authors_match:
+                                    current_pub['authors'] = authors_match.group(1).strip()
+                            
+                            if 'PUBLISHED:' in text:
+                                pub_match = re.search(r'PUBLISHED:\s*(\d{4}),\s*SOURCE:\s*(.+?)(?=VOLUME:|ISSUE:|INDEXED|IN MY:|$)', text, re.DOTALL)
+                                if pub_match:
+                                    current_pub['year'] = pub_match.group(1)
+                                    current_pub['journal'] = pub_match.group(2).strip()
+                                
+                                vol_match = re.search(r'VOLUME:\s*(\S+)', text)
+                                if vol_match:
+                                    current_pub['volume'] = vol_match.group(1)
+                                
+                                issue_match = re.search(r'ISSUE:\s*(\S+)', text)
+                                if issue_match:
+                                    current_pub['issue'] = issue_match.group(1)
+                        
+                        if current_pub:
+                            publications.append(current_pub)
+        
+        return publications
+    except Exception as e:
+        logging.error(f"Error scraping Authenticus: {e}")
+        raise
+
+
+# API Routes
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Academic Profile API"}
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
     status_dict = input.model_dump()
     status_obj = StatusCheck(**status_dict)
     
-    # Convert to dict and serialize datetime to ISO string for MongoDB
     doc = status_obj.model_dump()
     doc['timestamp'] = doc['timestamp'].isoformat()
     
@@ -56,15 +144,42 @@ async def create_status_check(input: StatusCheckCreate):
 
 @api_router.get("/status", response_model=List[StatusCheck])
 async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
     status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
     
-    # Convert ISO string timestamps back to datetime objects
     for check in status_checks:
         if isinstance(check['timestamp'], str):
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.get("/publications", response_model=List[Publication])
+async def get_publications():
+    """Get all publications - scrapes Authenticus on each request for auto-update"""
+    try:
+        publications = await scrape_authenticus_publications()
+        return publications
+    except Exception as e:
+        logging.error(f"Error fetching publications: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch publications")
+
+@api_router.post("/contact")
+async def submit_contact_form(form: ContactForm):
+    """Store contact form submission"""
+    try:
+        contact_doc = form.model_dump()
+        contact_doc['timestamp'] = datetime.now(timezone.utc).isoformat()
+        contact_doc['id'] = str(uuid.uuid4())
+        
+        await db.contact_submissions.insert_one(contact_doc)
+        
+        # In production, you would send email here
+        logging.info(f"Contact form submitted: {form.name} - {form.email}")
+        
+        return {"message": "Contact form submitted successfully"}
+    except Exception as e:
+        logging.error(f"Error submitting contact form: {e}")
+        raise HTTPException(status_code=500, detail="Failed to submit contact form")
+
 
 # Include the router in the main app
 app.include_router(api_router)
