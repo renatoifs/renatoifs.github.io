@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Globe } from 'lucide-react';
+import { Globe, Settings } from 'lucide-react';
 
 export const Header = () => {
   const { t, language, toggleLanguage } = useLanguage();
