@@ -137,6 +137,7 @@ img {
 .hero-photo {
     display: flex;
     justify-content: center;
+    padding-top: 4.5rem;
 }
 
 .photo-frame {
