@@ -186,7 +186,7 @@ img {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2rem;
-    align-items: center;
+    align-items: start;
     padding: 2rem;
 }
 
@@ -204,21 +204,14 @@ img {
 }
 
 .photo-bg {
-    position: absolute;
-    inset: 0;
-    background: var(--slate-800);
-    border-radius: 1rem;
-    transform: rotate(3deg);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: none;
 }
 
 .profile-img {
-    position: relative;
     width: 100%;
     height: auto;
     object-fit: cover;
     object-position: center top;
-    border-radius: 1rem;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
