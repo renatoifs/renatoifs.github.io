@@ -194,7 +194,8 @@ img {
 .hero-photo {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 0.5rem;
 }
 
 .photo-frame {
