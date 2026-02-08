@@ -206,7 +206,7 @@ img {
 .photo-bg {
     position: absolute;
     inset: 0;
-    background: var(--slate-700);
+    background: var(--slate-800);
     border-radius: 1rem;
     transform: rotate(3deg);
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
